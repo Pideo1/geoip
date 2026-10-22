@@ -5,7 +5,7 @@ on:
       download_geoip_db_from_github:
         description: "Download GeoLite2 databases from GitHub instead of MaxMind"
         type: boolean
-        default: true
+        default: false
   schedule:
     - cron: "0 0 * * 4"
   push:
@@ -54,7 +54,7 @@ jobs:
         shell: bash
 
       - name: Download GeoLite2 databases from GitHub
-        if: env.DOWNLOAD_FROM_GITHUB == 'true'
+        if: env.DOWNLOAD_FROM_GITHUB != 'true'
         run: |
           mkdir -p output
           curl -L --retry 3 --fail-with-body "https://raw.githubusercontent.com/Loyalsoldier/geoip/refs/heads/release/GeoLite2-ASN.tar.gz" -o ./output/GeoLite2-ASN.tar.gz
@@ -63,7 +63,7 @@ jobs:
           curl -L --retry 3 --fail-with-body "https://raw.githubusercontent.com/Loyalsoldier/geoip/refs/heads/release/GeoLite2-Country-CSV.zip" -o ./output/GeoLite2-Country-CSV.zip
 
       - name: Download GeoLite2 databases from MaxMind
-        if: env.DOWNLOAD_FROM_GITHUB != 'true'
+        if: env.DOWNLOAD_FROM_GITHUB == 'true'
         env:
           LICENSE_KEY: ${{ secrets.MAXMIND_GEOLITE2_LICENSE }}
         run: |
