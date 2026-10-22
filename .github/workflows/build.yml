@@ -5,7 +5,7 @@ on:
       download_geoip_db_from_github:
         description: "Download GeoLite2 databases from GitHub instead of MaxMind"
         type: boolean
-        default: false
+        default: true
   schedule:
     - cron: "0 0 * * 4"
   push:
