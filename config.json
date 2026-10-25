@@ -23,7 +23,7 @@
       "action": "add",
       "args": {
         "name": "cloudflare",
-        "uri": "https://www.cloudflare.com/ips-v4"
+        "uri": "https://raw.githubusercontent.com/radioactiveAHM/cf-scanner/refs/heads/main/ipv4.txt"
       }
     },
     {
@@ -31,7 +31,7 @@
       "action": "add",
       "args": {
         "name": "cloudflare",
-        "uri": "https://www.cloudflare.com/ips-v6"
+        "uri": "https://raw.githubusercontent.com/radioactiveAHM/cf-scanner/refs/heads/main/ipv6.txt"
       }
     },
     {
